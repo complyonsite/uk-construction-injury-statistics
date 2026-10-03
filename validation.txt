@@ -1,0 +1,81 @@
+== 1. Source checksums
+PASS  sha256 ridfatal.xlsx
+PASS  sha256 fatalities-reportable-under-riddor.xlsx
+PASS  sha256 ridhist.xlsx
+PASS  sha256 ridind.xlsx
+PASS  sha256 ridkind.xlsx
+PASS  sha256 lfsinjind.xlsx
+PASS  sha256 lfsinjsum.xlsx
+PASS  sha256 lfsillind.xlsx
+PASS  sha256 construction.pdf
+PASS  sha256 fatalinjuries.pdf
+PASS  sha256 hssh2425.pdf
+PASS  no unlisted files in sources/
+
+== 2. Rebuild from sources/ and compare with published files
+PASS  reproduces data/riddor-fatal-injuries-by-industry.csv
+PASS  reproduces data/riddor-fatal-injuries-by-industry.json
+PASS  reproduces data/riddor-fatal-injuries-by-kind.csv
+PASS  reproduces data/riddor-fatal-injuries-by-kind.json
+PASS  reproduces data/riddor-nonfatal-injuries-by-industry.csv
+PASS  reproduces data/riddor-nonfatal-injuries-by-industry.json
+PASS  reproduces data/riddor-nonfatal-injuries-by-kind.csv
+PASS  reproduces data/riddor-nonfatal-injuries-by-kind.json
+PASS  reproduces data/lfs-self-reported-injury.csv
+PASS  reproduces data/lfs-self-reported-injury.json
+PASS  reproduces data/lfs-self-reported-ill-health.csv
+PASS  reproduces data/lfs-self-reported-ill-health.json
+PASS  reproduces data/construction-only.csv
+PASS  reproduces data/construction-only.json
+PASS  reproduces charts/construction-worker-fatalities-1981-to-2025-26.csv
+PASS  reproduces charts/construction-fatal-injuries-by-kind-2021-22-to-2025-26.csv
+PASS  reproduces charts/construction-vs-all-industries-self-reported-injury-rate.csv
+PASS  no stray files in data/ or charts/
+PASS  construction-only rows all come from the six families
+      riddor-fatal-injuries-by-industry         10336 rows
+      riddor-fatal-injuries-by-kind             10449 rows
+      riddor-nonfatal-injuries-by-industry      12460 rows
+      riddor-nonfatal-injuries-by-kind           8415 rows
+      lfs-self-reported-injury                   7976 rows
+      lfs-self-reported-ill-health              31328 rows
+      construction-only                          4301 rows
+
+== 3. Internal consistency of the source tables
+PASS  fatal: workers = employees + self-employed (RIDHIST, RIDIND, RIDFATAL, RIDKIND)  [4503 groups tested, 0 mismatches]
+PASS  non-fatal: total = major_or_specified_injuries + over_3_day_injuries (RIDHIST, RIDIND, RIDKIND)  [354 groups tested, 0 mismatches]
+PASS  non-fatal: total = major_or_specified_injuries + over_7_day_injuries (RIDHIST, RIDIND, RIDKIND)  [4197 groups tested, 0 mismatches]
+PASS  kind of accident: sum of kinds = 'All accident kinds' (RIDKIND, RIDFATAL Table 3)  [1008 groups tested, 0 mismatches]
+PASS  record list: worker deaths by year and industry = RIDFATAL Table 1
+PASS  record list: worker deaths by year and kind = RIDFATAL Table 3
+PASS  record list: members of the public by year = RIDFATAL Table 2
+PASS  construction worker deaths agree across RIDHIST, RIDIND and RIDFATAL where years overlap  [{}]
+
+== 4. Figures stated in HSE's own summary publications
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.17: "There were 35 fatal injuries to workers in 2024/25p"  [RIDHIST Table 1 = 35]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.17: "annual average number of 40 fatalities for 2020/21-2024/25p"  [RIDHIST [40, 29, 47, 50, 35], mean 40.2]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.17: "53% of deaths over the same five-year period were classified as Falls from a height"  [RIDKIND 107/201 = 53.2%]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.17: "4 fatal injuries to members of the public in 2024/25p ... annual average of 4"  [RIDHIST Table 2 = 4; five years [4, 6, 2, 3, 4]]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.19: "an estimated 50,000 workers who reported sustaining a workplace non-fatal injury"  [LFSINJIND Table-1 = 50 thousand]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.19: "Around 2.5% of workers ... all industries (1.8%)"  [LFSINJIND rates 2500 and 1780 per 100,000]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.19: "29% of these workplace non-fatal injuries resulted in absence from work of over 7 days (approximate: HSE uses unrounded estimates)"  [LFSINJIND Table-3/Table-1 = 15/50 = 30%]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.21: "3,726 non-fatal injuries to employees ... 1,525 (41%) were specified ... 2,201 (59%)"  [RIDHIST Table 3 = 3726, 1525, 2201]
+PASS  RIDIND Table 3 construction 2024/25p total agrees with RIDHIST  [3726]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.8: "79,000 workers suffering from work-related ill health ... Around 3.8 % ... all industries (4.2%)"  [LFSILLIND Table-1 = 79 thousand, 3790 and 4170 per 100,000]
+PASS  construction.pdf (Construction statistics in Great Britain, 2025) p.8: "53% were musculoskeletal disorders (approximate: HSE uses unrounded estimates)"  [LFSILLIND Table-2/Table-1 = 41/79 = 51.9%]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.4: "126 workers killed in work-related accidents in 2025/26p"  [RIDFATAL Table 1 = 126]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.7: "a decrease of 2 fatalities from the previous year"  [128 - 126]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.8: "25 deaths in 2025/26p compared to an annual average of 37 over the last 5 years"  [RIDFATAL Table 1 = 25; 5-year total 186 / 5 = 37.2]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.8: "agriculture, forestry and fishing ... 22 fatal injuries in 2025/26p ... previous year total (23)"  [RIDFATAL Table 1 = 22, 23]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.19: "a fatal injury rate of 0.37 deaths per 100,000 workers"  [RIDFATAL Table 1 = 0.37]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.9: "construction ... around 5 times as high as the average rate across all industries"  [RIDFATAL 5-year rates 1.78 / 0.39 = 4.56]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.5: "104 members of the public were also killed in work-related accidents in 2025/26p"  [RIDFATAL Table 2 = 104]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.11: "An average of 37 deaths per year were due to falls from a height, representing 28%"  [RIDFATAL Table 3 184/5 = 36.8; 184/651 = 28.3%]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.12: "over half of all deaths in construction over this five-year period ... falls from a height (average of 19 deaths per year)"  [record list 97/186 = 52.2%; 97/5 = 19.4]
+PASS  fatalinjuries.pdf (Work-related fatal injuries in Great Britain, 2026) p.19: "217 twenty years ago (2005/06) and 495 in 1981"  [RIDHIST Table 1 = 217, 495]
+PASS  hssh2425.pdf (Health and safety at work: summary statistics 2025) p.2: "124 workers killed in work-related accidents in 2024/25"  [RIDHIST Table 1 = 124 (provisional; revised to 128 in RIDFATAL, July 2026)]
+PASS  hssh2425.pdf (Health and safety at work: summary statistics 2025) p.2: "59,219 employee work-related non-fatal injuries reported by employers under RIDDOR in 2024/25"  [RIDHIST Table 3 = 59219]
+PASS  hssh2425.pdf (Health and safety at work: summary statistics 2025) p.2: "0.7 million workers sustaining a workplace non-fatal injury in 2024/25"  [LFSINJSUM Table-1 = 680 thousand]
+NOTE  hssh2425.pdf (Health and safety at work: summary statistics 2025) p.3 headline "1.9 million" workers with work-related ill health is an all-jobs estimate from a workbook not included here. LFSILLIND "All industries" 2024/25 = 1494 thousand covers the current or most recent job only (LFSILLIND Note 0), so it is expected to be lower. Not counted as a check.
+PASS  LFSILLIND all-industries prevalence is below the all-jobs headline, as its Note 0 scope implies  [1494 < 1900 thousand]
+
+64 checks, 0 failed

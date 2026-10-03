@@ -1,0 +1,42 @@
+UK construction injury statistics by ComplyOnSite
+Licence and attribution
+
+DATA
+
+The statistics in data/, charts/ and sources/ are Crown copyright and database
+right, published by the Health and Safety Executive (HSE). They are reused
+under the Open Government Licence v3.0:
+
+    https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+HSE's copyright statement (https://www.hse.gov.uk/help/copyright.htm, updated
+29 August 2025, read 3 October 2026) says that Crown material on its website
+may be reused free of charge in any format or medium under the Open Government
+Licence, and gives this as its preferred acknowledgement. Include it when you
+redistribute or publish this data or anything derived from it:
+
+    Contains public sector information published by the Health and Safety
+    Executive and licensed under the Open Government Licence.
+
+Under the Open Government Licence you may copy, publish, distribute, transmit,
+adapt and exploit the information, commercially and non-commercially, provided
+you acknowledge the source and link to the licence where possible. The licence
+does not cover personal data, departmental or public-sector logos (including
+the HSE logo), or third-party rights the information provider is not
+authorised to license. It gives no right to imply that HSE endorses you or your
+use of the information, and HSE provides the information without warranty.
+Read the full licence text at the address above.
+
+Source files in sources/ are unmodified copies of HSE publications downloaded
+on 3 October 2026; see sources/MANIFEST.csv for each URL.
+
+COMPLYONSITE CONTRIBUTION
+
+The selection, restructuring into long format, field names, documentation,
+chart extracts and the build.py and validate.py scripts are by ComplyOnSite
+(https://complyonsite.com/). They are offered under the same Open Government
+Licence v3.0 terms. When citing this restructured dataset, also credit:
+
+    UK construction injury statistics by ComplyOnSite (https://complyonsite.com/).
+
+Neither HSE nor ComplyOnSite endorses any particular use of this dataset.

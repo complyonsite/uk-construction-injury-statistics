@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: >-
+  If you use this dataset, please cite it as below and include the HSE
+  acknowledgement: "Contains public sector information published by the Health
+  and Safety Executive and licensed under the Open Government Licence."
+type: dataset
+title: UK construction injury statistics by ComplyOnSite
+abstract: >-
+  Tidy long-format CSV and JSON copy of Health and Safety Executive workplace
+  fatal and non-fatal injury and work-related ill-health statistics for Great
+  Britain (RIDDOR and Labour Force Survey), with a construction-only file and
+  Datawrapper-ready chart extracts. Built from HSE's 1 July 2026 fatal injury
+  release and 20 November 2025 annual statistics release.
+authors:
+  - name: ComplyOnSite
+    website: https://complyonsite.com/
+date-released: 2026-10-03
+version: 2026-10-03
+license: OGL-UK-3.0
+url: https://complyonsite.com/
+keywords:
+  - HSE
+  - RIDDOR
+  - Labour Force Survey
+  - construction
+  - workplace injury
+  - fatal injuries
+  - Great Britain
+  - health and safety statistics
+references:
+  - type: data
+    title: "Health and safety statistics: tables (RIDFATAL, RIDHIST, RIDIND, RIDKIND, LFSINJIND, LFSINJSUM, LFSILLIND)"
+    authors:
+      - name: Health and Safety Executive
+    url: https://www.hse.gov.uk/statistics/tables/index.htm
+    license: OGL-UK-3.0
+  - type: report
+    title: Work-related fatal injuries in Great Britain, 2026
+    authors:
+      - name: Health and Safety Executive
+    date-released: 2026-07-01
+    url: https://www.hse.gov.uk/statistics/assets/docs/fatalinjuries.pdf
+  - type: report
+    title: Construction statistics in Great Britain, 2025
+    authors:
+      - name: Health and Safety Executive
+    date-released: 2025-11-20
+    url: https://www.hse.gov.uk/statistics/assets/docs/construction.pdf
