@@ -10,12 +10,12 @@ abstract: >-
   fatal and non-fatal injury and work-related ill-health statistics for Great
   Britain (RIDDOR and Labour Force Survey), with a construction-only file and
   Datawrapper-ready chart extracts. Built from HSE's 1 July 2026 fatal injury
-  release and 20 November 2025 annual statistics release.
+  release and 19 November 2026 annual statistics release.
 authors:
   - name: ComplyOnSite
     website: https://complyonsite.com/
-date-released: 2026-10-03
-version: 2026-10-03
+date-released: 2026-11-25
+version: 2026-11-25
 license: OGL-UK-3.0
 url: https://complyonsite.com/
 keywords:
@@ -41,8 +41,8 @@ references:
     date-released: 2026-07-01
     url: https://www.hse.gov.uk/statistics/assets/docs/fatalinjuries.pdf
   - type: report
-    title: Construction statistics in Great Britain, 2025
+    title: Construction statistics in Great Britain, 2026
     authors:
       - name: Health and Safety Executive
-    date-released: 2025-11-20
+    date-released: 2026-11-19
     url: https://www.hse.gov.uk/statistics/assets/docs/construction.pdf

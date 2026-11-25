@@ -27,15 +27,15 @@ BASE_URL = "https://www.hse.gov.uk/statistics/assets/docs/"
 SOURCES = OrderedDict([
     ("ridfatal.xlsx", {"published": "2026-07-01", "title": "RIDFATAL: Work-related fatal injuries reportable under RIDDOR"}),
     ("fatalities-reportable-under-riddor.xlsx", {"published": "2026-07-01", "title": "Fatal injuries reported under RIDDOR, 2021/22 to 2025/26p (record-level list)"}),
-    ("ridhist.xlsx", {"published": "2025-11-20", "title": "RIDHIST: Work-related injuries reported under RIDDOR from 1974"}),
-    ("ridind.xlsx", {"published": "2025-11-20", "title": "RIDIND: Work-related injuries reported under RIDDOR by detailed industry"}),
-    ("ridkind.xlsx", {"published": "2025-11-20", "title": "RIDKIND: Work-related injuries reported under RIDDOR by kind of accident and broad industry group"}),
-    ("lfsinjind.xlsx", {"published": "2025-11-20", "title": "LFSINJIND: Self-reported workplace injury by industry"}),
-    ("lfsinjsum.xlsx", {"published": "2025-11-20", "title": "LFSINJSUM: Self-reported workplace injuries - summary"}),
-    ("lfsillind.xlsx", {"published": "2025-11-20", "title": "LFSILLIND: Self-reported work-related ill health by industry"}),
-    ("construction.pdf", {"published": "2025-11-20", "title": "Construction statistics in Great Britain, 2025"}),
+    ("ridhist.xlsx", {"published": "2026-11-19", "title": "RIDHIST: Work-related injuries reported under RIDDOR from 1974"}),
+    ("ridind.xlsx", {"published": "2026-11-19", "title": "RIDIND: Work-related injuries reported under RIDDOR by detailed industry"}),
+    ("ridkind.xlsx", {"published": "2026-11-19", "title": "RIDKIND: Work-related injuries reported under RIDDOR by kind of accident and broad industry group"}),
+    ("lfsinjind.xlsx", {"published": "2026-11-19", "title": "LFSINJIND: Self-reported workplace injury by industry"}),
+    ("lfsinjsum.xlsx", {"published": "2026-11-19", "title": "LFSINJSUM: Self-reported workplace injuries - summary"}),
+    ("lfsillind.xlsx", {"published": "2026-11-19", "title": "LFSILLIND: Self-reported work-related ill health by industry"}),
+    ("construction.pdf", {"published": "2026-11-19", "title": "Construction statistics in Great Britain, 2026"}),
     ("fatalinjuries.pdf", {"published": "2026-07-01", "title": "Work-related fatal injuries in Great Britain, 2026"}),
-    ("hssh2425.pdf", {"published": "2025-11-20", "title": "Health and safety at work: summary statistics for Great Britain 2025"}),
+    ("hssh2526.pdf", {"published": "2026-11-19", "title": "Health and safety at work: summary statistics for Great Britain 2026"}),
 ])
 
 FIELDS = [
@@ -52,8 +52,8 @@ FIELDS = [
 FAMILIES = OrderedDict([
     ("riddor-fatal-injuries-by-industry", "Work-related fatal injuries reported under RIDDOR by industry: workers 1974 to 2025/26p, members of the public 1981 to 2025/26p"),
     ("riddor-fatal-injuries-by-kind", "Work-related fatal injuries to workers reported under RIDDOR by kind of accident and industry, 2014/15 to 2025/26p"),
-    ("riddor-nonfatal-injuries-by-industry", "Non-fatal injuries reported by employers under RIDDOR by industry, 1974 to 2024/25p"),
-    ("riddor-nonfatal-injuries-by-kind", "Non-fatal injuries to employees reported under RIDDOR by kind of accident and industry, 2014/15 to 2024/25p"),
+    ("riddor-nonfatal-injuries-by-industry", "Non-fatal injuries reported by employers under RIDDOR by industry, 1974 to 2025/26p"),
+    ("riddor-nonfatal-injuries-by-kind", "Non-fatal injuries to employees reported under RIDDOR by kind of accident and industry, 2014/15 to 2025/26p"),
     ("lfs-self-reported-injury", "Labour Force Survey self-reported workplace non-fatal injury, all industries (annual) and by industry (3- and 5-year averages)"),
     ("lfs-self-reported-ill-health", "Labour Force Survey self-reported work-related ill health by industry, annual and 3- and 5-year averages"),
 ])
@@ -258,7 +258,7 @@ def fatal_by_industry(wb):
     out = []
     ds = "riddor-fatal-injuries-by-industry"
 
-    # RIDHIST Table 1: workers, broad industry group, 1974 to 2024/25p
+    # RIDHIST Table 1: workers, broad industry group, 1974 to 2025/26p
     hist = wb["ridhist.xlsx"]
     codes = code_text(hist["Background information"])
     t = hist["Table 1"]
@@ -303,7 +303,7 @@ def fatal_by_industry(wb):
             put_value(rec, cell(r, j))
             out.append(finalise(rec))
 
-    # RIDIND Table 1: workers, SIC section and division, 2014/15 to 2024/25p
+    # RIDIND Table 1: workers, SIC section and division, 2014/15 to 2025/26p
     t = wb["ridind.xlsx"]["Table 1"]
     h = header_index(t, "Year")
     for i in range(h + 1, len(t)):
@@ -744,7 +744,7 @@ def charts(tables):
     fatal = tables["riddor-fatal-injuries-by-industry"]
 
     # 1. Construction worker fatalities 1981 to 2025/26p.
-    # RIDFATAL (July 2026) for 2021/22 onwards; RIDHIST (November 2025) for 1981 to 2020/21.
+    # RIDFATAL (July 2026) for 2021/22 onwards; RIDHIST (November 2026) for 1981 to 2020/21.
     rows = []
     ridfatal = {r["year"]: r for r in pick(fatal, source_sheet="Table 1", industry_code="F", worker_group="workers",
                                              measure="fatal_injuries", period_type="annual")
